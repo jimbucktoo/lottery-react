@@ -120,6 +120,7 @@ class App extends Component {
                     </div>
                 </form>
                 <br />
+                <br />
                 <div className="form">
                     <h4>Ready to pick a winner?</h4>
                     <br />
