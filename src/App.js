@@ -27,6 +27,7 @@ class App extends Component {
         event.preventDefault();
 
         const accounts = await web3.eth.getAccounts();
+        console.log(accounts);
 
         this.setState({ message: "Waiting on transaction success..." });
 
@@ -35,7 +36,13 @@ class App extends Component {
             value: web3.utils.toWei(this.state.value, "ether"),
         });
 
-        this.setState({ message: "You have been entered!" });
+        const players = await lottery.methods.getPlayers().call();
+        const balance = await web3.eth.getBalance(lottery.options.address);
+        this.setState({
+            message: "You have been entered!",
+            players: players,
+            balance: balance,
+        });
     };
 
     onClick = async () => {
